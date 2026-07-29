@@ -87,11 +87,25 @@
   .section-num { font-family: var(--mono); font-size: 12.5px; color: var(--text-dimmer); }
   .section-title { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 30px; color: var(--text); }
 
+  /* ABOUT — text + photo */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 240px; gap: 56px; align-items: start;
+  }
   .about p { color: var(--text-dim); font-size: 16px; margin-bottom: 18px; }
   .about p:last-child { margin-bottom: 0; }
   .about strong { color: var(--text); font-weight: 500; }
   .interest-line { margin-top: 32px; font-family: var(--mono); font-size: 12.5px; color: var(--text-dimmer); letter-spacing: 0.3px; }
   .interest-line span { color: var(--accent); }
+  .about-photo {
+    width: 240px; height: 300px; border-radius: 4px; overflow: hidden;
+    border: 1px solid var(--border); background: var(--bg-2);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about-photo .placeholder {
+    font-family: var(--mono); font-size: 11.5px; color: var(--text-dimmer);
+    text-align: center; padding: 20px; line-height: 1.6;
+  }
 
   .proj-row { display: grid; grid-template-columns: 90px 1fr; gap: 32px; padding: 32px 0; border-bottom: 1px solid var(--border); }
   .proj-row:first-child { padding-top: 0; }
@@ -148,6 +162,8 @@
     section { padding: 64px 0; }
     .proj-row, .press-item { grid-template-columns: 1fr; gap: 8px; }
     .cert-row { grid-template-columns: 1fr; gap: 4px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-photo { width: 180px; height: 220px; }
   }
 </style>
 </head>
@@ -190,27 +206,32 @@
       <span class="section-num">01</span>
       <span class="section-title">About Me</span>
     </div>
-    <div class="about prose reveal">
-      <p>
-        I work where <strong>IT service management</strong> meets software development —
-        equally comfortable keeping a service desk running smoothly and writing
-        the code that automates the repetitive parts away.
-      </p>
-      <p>
-        My background covers the <strong>ITIL 4</strong> framework end to end — incident,
-        problem, and change management, service request handling, and the guiding
-        principles that keep a service value chain from falling over. I recently
-        put that knowledge to the test in a job interview, which pushed me to
-        turn scattered notes into a clear, working understanding of the framework.
-      </p>
-      <p>
-        Outside of IT ops, I build things with my hands — DIY electronics projects,
-        small hardware hacks, and I'm currently setting up a game streaming
-        project on Twitch, thinking through scheduling and audio quality before
-        buying any gear.
-      </p>
-      <div class="interest-line">
-        <span>→</span> ITIL 4 · Incident Management · Change Management · Service Desk · Automation · Web Development
+    <div class="about-grid reveal">
+      <div class="about prose">
+        <p>
+          I work where <strong>IT</strong> meets <strong>cyber security</strong> —
+          equally comfortable keeping systems running smoothly and digging into
+          how they can be attacked, monitored, or hardened.
+        </p>
+        <p>
+          My focus is on the practical side of security: understanding how
+          incidents happen, how to respond to them, and how good IT processes
+          prevent most of them from happening in the first place.
+        </p>
+        <p>
+          Outside of work, I build things with my hands — DIY electronics projects,
+          small hardware hacks, and I'm currently setting up a game streaming
+          project on Twitch, thinking through scheduling and audio quality before
+          buying any gear.
+        </p>
+        <div class="interest-line">
+          <span>→</span> IT Operations · Cyber Security · Incident Response · Automation · Web Development
+        </div>
+      </div>
+      <div class="about-photo">
+        <!-- Replace src with your photo, e.g. src="images/profile.jpg" -->
+        <img src="images/profile.jpg" alt="Rui Nogueira Caldas" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder" style="display:none;">Add your photo<br>images/profile.jpg</div>
       </div>
     </div>
   </div>
@@ -245,7 +266,7 @@
       <div class="proj-year">—</div>
       <div>
         <div class="proj-title"><a href="#">[Another project]</a> <span class="proj-status">in progress</span></div>
-        <div class="proj-desc">Placeholder — add a coding project, or an ITIL-related process or tool you've built.</div>
+        <div class="proj-desc">Placeholder — add a coding or security project you've built.</div>
         <div class="proj-tech"><span>Tech</span></div>
       </div>
     </div>
@@ -261,21 +282,22 @@
 
     <div class="cert-filters">
       <button class="cert-filter active" data-filter="all">All</button>
-      <button class="cert-filter" data-filter="itil">ITIL</button>
+      <button class="cert-filter" data-filter="security">Security</button>
+      <button class="cert-filter" data-filter="it">IT</button>
       <button class="cert-filter" data-filter="dev">Development</button>
       <button class="cert-filter" data-filter="other">Other</button>
     </div>
 
     <div class="cert-list">
-      <div class="cert-row" data-cat="itil">
-        <div class="cert-name">ITIL Foundation<div class="cert-issuer">PeopleCert / Axelos</div></div>
-        <div class="cert-date">[date]</div>
-      </div>
-      <div class="cert-row" data-cat="dev">
+      <div class="cert-row" data-cat="security">
         <div class="cert-name">[Certificate name]<div class="cert-issuer">[Issuer]</div></div>
         <div class="cert-date">[date]</div>
       </div>
-      <div class="cert-row" data-cat="other">
+      <div class="cert-row" data-cat="it">
+        <div class="cert-name">[Certificate name]<div class="cert-issuer">[Issuer]</div></div>
+        <div class="cert-date">[date]</div>
+      </div>
+      <div class="cert-row" data-cat="dev">
         <div class="cert-name">[Certificate name]<div class="cert-issuer">[Issuer]</div></div>
         <div class="cert-date">[date]</div>
       </div>
@@ -287,11 +309,11 @@
   <div class="wrap">
     <div class="section-head">
       <span class="section-num">04</span>
-      <span class="section-title">Blog</span>
+      <span class="section-title">Updates</span>
     </div>
 
     <div class="blog-item reveal">
-      <div class="blog-date">July 29, 2026</div>
+      <div class="blog-date">July 30, 2026</div>
       <div class="blog-title">Portfolio site, take two</div>
       <div class="blog-excerpt">Rebuilt this site with a calmer, more editorial design — first version leaned a little too hard into a dashboard look.</div>
     </div>
